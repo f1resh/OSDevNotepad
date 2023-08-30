@@ -1,21 +1,43 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
-#include <QMainWindow>
-
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QTextEdit>
+#include <QtGui/QClipboard>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QMenu>
 
 class MainWindow : public QMainWindow
 {
+
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+
+    explicit MainWindow(QWidget *parent = nullptr);
+
+private slots:
+
+    void copyToClipboard();
+
+    void pasteFromClipboard();
+
+    void cutText();
 
 private:
-    Ui::MainWindow *ui;
+
+    QTextEdit *textEdit;
+
+    QAction *copyAction;
+
+    QAction *pasteAction;
+
+    QAction *cutAction;
+
+    QClipboard *clipboard;
+
+    void createMenu();
+
 };
 #endif // MAINWINDOW_H
