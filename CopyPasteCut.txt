@@ -1,0 +1,58 @@
+mainwindow.h:
+#include <QtWidgets/QMessageBox>
+#include <QtGui/QClipboard>
+
+private slots:
+
+    void copyToClipboard();
+
+    void pasteFromClipboard();
+
+    void cutText();
+
+private:
+
+    QAction *copyAction;
+
+    QAction *pasteAction;
+
+    QAction *cutAction;
+
+    QClipboard *clipboard;
+
+};
+
+mainwindow.cpp:
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
+{
+    setWindowTitle("Clipboard");
+}
+
+void MainWindow::copyToClipboard()
+{
+    clipboard = QApplication::clipboard();
+    QString selectedText = textEdit->textCursor().selectedText();
+    if (selectedText.isEmpty())
+    {
+        QMessageBox::warning(this, "Clipboard", "No text selected!");
+        return;
+    }
+    clipboard->setText(selectedText);
+}
+
+void MainWindow::pasteFromClipboard()
+{
+    clipboard = QApplication::clipboard();
+    QString clipboardText = clipboard->text();
+    if (clipboardText.isEmpty())
+    {
+        QMessageBox::warning(this, "Clipboard", "The buffer is empty!");
+        return;
+    }
+    textEdit->insertPlainText(clipboardText);
+}
+
+void MainWindow::cutText()
+{
+    textEdit->cut();
+}
