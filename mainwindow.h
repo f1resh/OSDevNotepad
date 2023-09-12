@@ -22,8 +22,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-public:
-    mdiMain *mdi;
+    MdiMain *mdi;
     QPushButton *testButton;
 };
 #endif // MAINWINDOW_H

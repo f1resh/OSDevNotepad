@@ -1,14 +1,8 @@
 #include "mdimain.h"
-#include "mainwindow.h"
 #include <QTextEdit>
 
-mdiMain::mdiMain(QMdiArea*parent)
-    : QMdiArea{parent}
-{
 
-}
-
-void mdiMain::slotOpenNewDoc()
+void MdiMain::slotOpenNewDoc(MdiMain *mdi)
 {
-    //mdi -> addSubWindow(new QTextEdit());
+    mdi -> addSubWindow(new QTextEdit());
 }
