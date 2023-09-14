@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "mdimain.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +17,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    MdiMain *mdi;
+    class MdiMain *mdi;
 };
 #endif // MAINWINDOW_H
