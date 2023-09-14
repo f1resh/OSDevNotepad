@@ -8,7 +8,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    //create an object of mdiMain class
     mdi = new MdiMain(this);
+
+    //set object as a central widget
     MainWindow::setCentralWidget(mdi);
 }
 
