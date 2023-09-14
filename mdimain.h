@@ -5,34 +5,33 @@
 #include <QWidget>
 #include <QMdiArea>
 #include <QPushButton>
+#include <QMdiSubWindow>
 
 
 class MdiMain : public QMdiArea
 {
     Q_OBJECT
 private:
-    QMdiArea *mdi;
+    QString docNameText;
+
 public:
-    MdiMain(QMdiArea *parent = nullptr)
+    MdiMain(QWidget *parent = nullptr) : QMdiArea(parent)
     {
-        mdi -> setViewMode(QMdiArea::TabbedView);
-        mdi -> setActivationOrder(QMdiArea::StackingOrder);
-        mdi -> setTabsClosable(true);
-        mdi -> setTabsMovable(true);
-        mdi -> addSubWindow(new QTextEdit());
+        this -> setViewMode(QMdiArea::TabbedView);
+        this -> setActivationOrder(QMdiArea::StackingOrder);
+        this -> setTabsClosable(true);
+        this -> setTabsMovable(true);
+        this -> addSubWindow(new QTextEdit(this));
+        this -> nameDoc();
     }
-    //    explicit MdiMain(QMdiArea* m) : mdi(m)
-//    {
-//        mdi -> setViewMode(QMdiArea::TabbedView);
-//        mdi -> setActivationOrder(QMdiArea::StackingOrder);
-//        mdi -> setTabsClosable(true);
-//        mdi -> setTabsMovable(true);
-//        mdi -> addSubWindow(new QTextEdit());
-//    }
+
 public slots:
-    void slotOpenNewDoc(MdiMain *mdi);
+    void slotOpenNewDoc();
+
 signals:
 
+private:
+    void nameDoc();
 };
 
 #endif // MDIMAIN_H
