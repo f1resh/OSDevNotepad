@@ -1,29 +1,18 @@
 #ifndef MDIMAIN_H
 #define MDIMAIN_H
 
-#include "qtextedit.h"
 #include <QWidget>
 #include <QMdiArea>
-#include <QPushButton>
+#include <QTextEdit>
 #include <QMdiSubWindow>
 
 
 class MdiMain : public QMdiArea
 {
     Q_OBJECT
-private:
-    QString docNameText;
 
 public:
-    MdiMain(QWidget *parent = nullptr) : QMdiArea(parent)
-    {
-        this -> setViewMode(QMdiArea::TabbedView);
-        this -> setActivationOrder(QMdiArea::StackingOrder);
-        this -> setTabsClosable(true);
-        this -> setTabsMovable(true);
-        this -> addSubWindow(new QTextEdit(this));
-        this -> nameDoc();
-    }
+    MdiMain(QWidget *parent = nullptr);
 
 public slots:
     void slotOpenNewDoc();
