@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include <QPlainTextEdit>
+#include "mdimain.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -8,12 +8,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QPlainTextEdit* plainTextEdit = new QPlainTextEdit(this);
-    MainWindow::setCentralWidget(plainTextEdit);
+    //create an object of mdiMain class
+    mdi = new MdiMain(this);
+
+    //set object as a central widget
+    MainWindow::setCentralWidget(mdi);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete mdi;
 }
 

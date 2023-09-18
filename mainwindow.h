@@ -17,5 +17,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    class MdiMain *mdi;
 };
 #endif // MAINWINDOW_H
