@@ -29,6 +29,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         mdimain.h mdimain.cpp
         copypastecut.h copypastecut.cpp
+        search.h search.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET BoringNotepad APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
