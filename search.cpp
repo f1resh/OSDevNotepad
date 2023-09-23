@@ -2,73 +2,7 @@
 
 Search::Search(QMdiArea *mdi, QWidget *parent): QWidget(parent), mdiMain(mdi)
 {
-    if (mdiMain == nullptr)
-    {
-        return;
-    }
-
-    QTextEdit *currentTextEdit = this->getCurrentTextEdit();
-    if (currentTextEdit == nullptr)
-    {
-        return;
-    }
-
-    findDialog = new QDialog(this);
-    findDialog->setWindowTitle("Find and Replace");
-
-    tabWidget = new QTabWidget(findDialog);
-    connect(tabWidget, &QTabWidget::tabBarClicked, this, &Search::initLayout);
-
-    findLabel = new QLabel("Find", tabWidget);
-    replaceLabel = new QLabel("Replace with", tabWidget);
-
-    QWidget* findTab = new QWidget(tabWidget);
-    QWidget* replaceTab = new QWidget(tabWidget);
-
-    findLineEdit = new QLineEdit(tabWidget);
-
-    QTextCursor currentCursor = currentTextEdit->textCursor();
-    QString selectedText = currentCursor.selectedText();
-    if (!selectedText.isEmpty())
-    {
-        findLineEdit->setText(selectedText);
-    }
-
-    replaceLineEdit = new QLineEdit(tabWidget);
-
-    findNextButton = new QPushButton("Find next",tabWidget);
-    connect(findNextButton, &QPushButton::clicked, this, &Search::findText);
-    findNextButton->setDefault(true);
-
-    findPrevButton = new QPushButton("Find prev",tabWidget);
-    connect(findPrevButton, &QPushButton::clicked, this, &Search::findText);
-
-    replacePrevButton = new QPushButton("Replace and " + findPrevButton->text(),this);
-    connect(replacePrevButton, &QPushButton::clicked, this, &Search::replaceSelectedText);
-
-    replaceNextButton = new QPushButton("Replace and " + findNextButton->text(),this);
-    connect(replaceNextButton, &QPushButton::clicked, this, &Search::replaceSelectedText);
-
-    replaceAllButton = new QPushButton("Replace All",this);
-    connect(replaceAllButton, &QPushButton::clicked, this, &Search::replaceAllText);
-
-    resultLabel = new QLabel(tabWidget);
-
-    QGridLayout* layout = new QGridLayout(findDialog);
-
-    tabWidget->addTab(findTab, "Find");
-    tabWidget->addTab(replaceTab, "Replace");
-
-    int tabCount = tabWidget->count();
-    while (tabCount)
-    {
-        this->initLayout(--tabCount);
-    }
-
-    layout->addWidget(tabWidget);
-    findDialog->setLayout(layout);
-    findDialog->show();
-
+    this->init();
 }
 
 void Search::findText()
@@ -92,7 +26,6 @@ void Search::findText()
     {
         return;
     }
-
     resultLabel->clear();
 
     QTextCursor cursor = currentTextEdit->textCursor();
@@ -123,25 +56,22 @@ void Search::findText()
             }
             else
             {
-                resultString = "Not found. ";
+                resultString = "Нет результатов. ";
             }
             cursor = currentTextEdit->textCursor();
             if (isFindNext)
             {
                 if (replaceCounter)
                 {
-                    resultLabel->setText("Replaced " + QString::number(replaceCounter)+ " results. End of document reached.");
+                    resultString = "Произведено замен: " + QString::number(replaceCounter)+ ". ";
                     replaceCounter = 0;
                 }
-                else
-                {
-                    resultLabel->setText(resultString + "End of document reached.");
-                }
+                resultLabel->setText(resultString + "Достигнут конец документа.");
                 cursor.movePosition(QTextCursor::End);
             }
             else
             {
-                resultLabel->setText(resultString + "Start of document reached.");
+                resultLabel->setText(resultString + "Достигнуто начало документа.");
                 cursor.movePosition(QTextCursor::Start);
             }
             currentTextEdit->setTextCursor(cursor);
@@ -162,6 +92,7 @@ void Search::replaceAllText()
     {
         return;
     }
+
     QString searchText = findLineEdit->text();
     QString replaceText = replaceLineEdit->text();
 
@@ -272,6 +203,76 @@ void Search::clearTabLayout(QGridLayout *layout)
         layout->removeWidget(item->widget());
         layout->removeItem(item);
     }
+}
+
+void Search::init()
+{
+    if (mdiMain == nullptr)
+    {
+        return;
+    }
+
+    QTextEdit *currentTextEdit = this->getCurrentTextEdit();
+    if (currentTextEdit == nullptr)
+    {
+        return;
+    }
+
+    findDialog = new QDialog(this);
+    findDialog->setWindowTitle("Поикс и замена");
+
+    tabWidget = new QTabWidget(findDialog);
+    connect(tabWidget, &QTabWidget::tabBarClicked, this, &Search::initLayout);
+
+    findLabel = new QLabel("Найти", tabWidget);
+    replaceLabel = new QLabel("Заменить на", tabWidget);
+
+    QWidget* findTab = new QWidget(tabWidget);
+    QWidget* replaceTab = new QWidget(tabWidget);
+
+    findLineEdit = new QLineEdit(tabWidget);
+
+    QTextCursor currentCursor = currentTextEdit->textCursor();
+    QString selectedText = currentCursor.selectedText();
+    if (!selectedText.isEmpty())
+    {
+        findLineEdit->setText(selectedText);
+    }
+
+    replaceLineEdit = new QLineEdit(tabWidget);
+
+    findNextButton = new QPushButton("Искать далее",tabWidget);
+    connect(findNextButton, &QPushButton::clicked, this, &Search::findText);
+    findNextButton->setDefault(true);
+
+    findPrevButton = new QPushButton("Искать назад",tabWidget);
+    connect(findPrevButton, &QPushButton::clicked, this, &Search::findText);
+
+    replacePrevButton = new QPushButton("Заменить и " + findPrevButton->text(),this);
+    connect(replacePrevButton, &QPushButton::clicked, this, &Search::replaceSelectedText);
+
+    replaceNextButton = new QPushButton("Заменить и " + findNextButton->text(),this);
+    connect(replaceNextButton, &QPushButton::clicked, this, &Search::replaceSelectedText);
+
+    replaceAllButton = new QPushButton("Заменить все",this);
+    connect(replaceAllButton, &QPushButton::clicked, this, &Search::replaceAllText);
+
+    resultLabel = new QLabel(tabWidget);
+
+    QGridLayout* layout = new QGridLayout(findDialog);
+
+    tabWidget->addTab(findTab, "Поиск");
+    tabWidget->addTab(replaceTab, "Замена");
+
+    int tabCount = tabWidget->count();
+    while (tabCount)
+    {
+        this->initLayout(--tabCount);
+    }
+
+    layout->addWidget(tabWidget);
+    findDialog->setLayout(layout);
+    findDialog->show();
 }
 
 QTextEdit *Search::getCurrentTextEdit()
