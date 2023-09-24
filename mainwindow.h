@@ -18,5 +18,7 @@ public:
 private:
     Ui::MainWindow *ui;
     class MdiMain *mdi;
+    class SaveLoad *saveload;
+    class CopyPasteCut* copypastecut;
 };
 #endif // MAINWINDOW_H
