@@ -20,5 +20,9 @@ private:
     class MdiMain *mdi;
     class SaveLoad *saveload;
     class CopyPasteCut* copypastecut;
+
+private slots:
+    void SearchInit();
+
 };
 #endif // MAINWINDOW_H
