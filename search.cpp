@@ -220,6 +220,7 @@ void Search::init()
 
     findDialog = new QDialog(this);
     findDialog->setWindowTitle("Поикс и замена");
+    findDialog->setWindowFlags(findDialog->windowFlags() | Qt::MSWindowsFixedSizeDialogHint);
 
     tabWidget = new QTabWidget(findDialog);
     connect(tabWidget, &QTabWidget::tabBarClicked, this, &Search::initLayout);
