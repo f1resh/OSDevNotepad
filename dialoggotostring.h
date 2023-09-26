@@ -1,19 +1,22 @@
 #ifndef DIALOGGOTOSTRING_H
 #define DIALOGGOTOSTRING_H
 
-//#include <QObject>
 #include <QDialog>
 #include <QWidget>
-#include <QPushButton>
-#include <QGridLayout>
-#include <QSpinBox>
-#include <QLabel>
 
-class dialogGoToString : public QDialog
+
+    class QPushButton;
+    class QGridLayout;
+    class QSpinBox;
+    class QLabel;
+    class QMdiArea;
+
+
+class DialogGoToString : public QDialog
 {
 public:
-    dialogGoToString(QWidget *parent = nullptr);
-    ~dialogGoToString();
+    DialogGoToString(QMdiArea* mainArea, QWidget *parent = nullptr);
+    ~DialogGoToString();
     int lineNumber() const;
 
 private:
