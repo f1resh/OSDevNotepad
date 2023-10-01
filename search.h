@@ -12,6 +12,7 @@
 #include <QLabel>
 #include <QString>
 #include <QTabWidget>
+#include <QEventLoop>
 
 /**
  * @class Search
@@ -53,6 +54,14 @@ private slots:
      */
     void initLayout(int index);
 
+public slots:
+
+    /**
+     * @brief Слот для открытия вкладок.
+     * @param index Индекс текущей вкладки.
+     */
+    void showTab(int index);
+
 private:
 
     QDialog* findDialog{nullptr};           ///< Диалоговое окно для поиска и замены текста.
@@ -79,15 +88,14 @@ private:
     void clearTabLayout(QGridLayout* layout);
 
     /**
-     * @brief Метод выхода из программы.
-     * @param condition Условие выхода из программы(return при true).
-     */
-    void returnBecause(bool condition);
-
-    /**
      * @brief Метод инициализации класса.
      */
     void init();
+
+    /**
+     * @brief Метод заполнения поля ввода текста для поиска выделенным фрагментом(если фрагмент не выделен, поле остается пустым при активации окна).
+     */
+    void findLineEditInit();
 
     bool findStatus{false};                 ///< Флаг состояния поиска (true, если найдено хотя бы одно совпадение).
 

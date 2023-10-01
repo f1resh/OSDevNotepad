@@ -20,9 +20,7 @@ private:
     class MdiMain *mdi;
     class SaveLoad *saveload;
     class CopyPasteCut* copypastecut;
-
-private slots:
-    void SearchInit();
+    class SearchController* searchcontroller;
 
 };
 #endif // MAINWINDOW_H
