@@ -4,13 +4,35 @@
 #include <QSpinBox>
 #include <QLabel>
 #include <QMdiArea>
+#include <QTextEdit>
+#include <QPlainTextEdit>
+#include <QMdiSubWindow>
 
 
-DialogGoToString::DialogGoToString(QMdiArea* mainArea, QWidget *parent)
-    : QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint)
+DialogGoToString::DialogGoToString(QMdiArea* area, QWidget *parent) :
+    QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint | Qt::WindowCloseButtonHint), mainArea(area)
 {
+    this->init();
+}
+
+DialogGoToString::~DialogGoToString() {}
+
+void DialogGoToString::init() {
+
+    if (mainArea == nullptr) {
+        return;
+    }
+
+    QTextEdit *currentTextEdit = this->getCurrentTextEdit(mainArea);
+    if (currentTextEdit == nullptr) {
+        return;
+    }
+
+    int strCount = getStringsNumbers(currentTextEdit);
+
     m_lineNumber = new QSpinBox;
     m_lineNumber->setMinimum(1);
+    m_lineNumber->setMaximum(strCount);
 
     strNumber = new QLabel(this);
     strNumber->setBuddy(m_lineNumber);
@@ -18,16 +40,13 @@ DialogGoToString::DialogGoToString(QMdiArea* mainArea, QWidget *parent)
     goTo   = new QPushButton(this);
     cancel = new QPushButton(this);
 
-    connect(goTo, SIGNAL(clicked()), SLOT(accept()));
+    connect(goTo, &QPushButton::clicked, this, &DialogGoToString::moveCursorToString);
     connect(cancel, SIGNAL(clicked()), SLOT(reject()));
-
 
     goTo->setText(tr("Перейти"));
     cancel->setText(tr("Отмена"));
     strNumber->setText(tr("№ строки:"));
 
-
-    //Layout setup
     QGridLayout* ptopLayout = new QGridLayout;
     ptopLayout->addWidget(strNumber, 4, 0);
     ptopLayout->addWidget(m_lineNumber, 4, 1);
@@ -35,12 +54,65 @@ DialogGoToString::DialogGoToString(QMdiArea* mainArea, QWidget *parent)
     ptopLayout->addWidget(cancel, 10, 1);
     setLayout(ptopLayout);
 
-
+    this->show();
 }
-
-DialogGoToString::~DialogGoToString() {}
 
 int DialogGoToString::lineNumber() const
 {
     return m_lineNumber->value();
+}
+
+QTextEdit *DialogGoToString::getCurrentTextEdit(QMdiArea* mainArea) {
+
+    if (!mainArea->subWindowList().isEmpty())
+    {
+        QWidget* currentWidget = mainArea->currentSubWindow()->widget();
+        if (currentWidget != nullptr)
+        {
+            QTextEdit *textEdit = qobject_cast<QTextEdit*>(currentWidget);
+            if (textEdit != nullptr)
+            {
+                return textEdit;
+            }
+        }
+    }
+    return nullptr;
+}
+
+int DialogGoToString::getStringsNumbers(QTextEdit* currentTextEdit) {
+
+    if (mainArea == nullptr) {
+        return 0;
+    }
+
+    if (currentTextEdit == nullptr) {
+        return 0;
+    }
+
+    return currentTextEdit->document()->blockCount();
+}
+
+void DialogGoToString::moveCursorToString() {
+
+    QTextEdit *currentTextEdit = this->getCurrentTextEdit(mainArea);
+
+    QTextCursor cursor = currentTextEdit->textCursor();
+    int stringNumber = lineNumber();
+
+    cursor.movePosition(QTextCursor::Start);
+
+    if (stringNumber == 1) {
+        currentTextEdit->setTextCursor(cursor);
+    } else if (stringNumber > getStringsNumbers(currentTextEdit)) {
+        cursor.movePosition(QTextCursor::End);
+        currentTextEdit->setTextCursor(cursor);
+    } else {
+        int i = 0;
+        while (i != stringNumber - 1) {
+            cursor.movePosition(QTextCursor::Down);
+            i = cursor.blockNumber();
+        }
+        currentTextEdit->setTextCursor(cursor);
+    }
+
 }
