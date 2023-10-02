@@ -6,6 +6,8 @@
 #include "copypastecut.h"
 #include "searchcontroller.h"
 
+#define RELEASE(p) if (p) {delete p; p = NULL;}
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -21,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
     copypastecut = new CopyPasteCut(mdi);
     searchcontroller = new SearchController(mdi, mdi);
 
+    connect(ui->actionExit,SIGNAL(triggered()),this,SLOT(close()));
     connect(ui->actionNew,SIGNAL(triggered()),mdi,SLOT(slotOpenNewDoc()));
     connect(ui->actionLoad,SIGNAL(triggered()),saveload,SLOT(LoadTabFromFile()));
     connect(ui->actionSave,SIGNAL(triggered()),saveload,SLOT(SaveActiveTabToFile()));
@@ -30,7 +33,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    delete ui;
-    delete mdi;
+    RELEASE(saveload);
+    RELEASE(copypastecut);
+    RELEASE(searchcontroller);
+    RELEASE(ui);
+    RELEASE(mdi);
 }
 
