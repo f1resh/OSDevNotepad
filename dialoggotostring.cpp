@@ -28,6 +28,8 @@ void DialogGoToString::init() {
         return;
     }
 
+    connect(mainArea, &QMdiArea::subWindowActivated, this, &DialogGoToString::updateLinesCount);
+    connect(currentTextEdit, &QTextEdit::cursorPositionChanged, this, &DialogGoToString::updateLinesCount);
     int strCount = getStringsNumbers(currentTextEdit);
 
     m_lineNumber = new QSpinBox;
@@ -109,12 +111,22 @@ void DialogGoToString::moveCursorToString() {
     } else {
         int i = 0;
         while (i != stringNumber - 1) {
-            cursor.movePosition(QTextCursor::Down, QTextCursor::MoveAnchor);
-            qDebug() << cursor.position();
+            cursor.movePosition(QTextCursor::Down);
             i = cursor.blockNumber();
         }        
         currentTextEdit->setTextCursor(cursor);
-
     }
+    currentTextEdit->activateWindow();
 
+}
+
+void DialogGoToString::updateLinesCount()
+{
+    QTextEdit *currentTextEdit = this->getCurrentTextEdit(mainArea);
+    if (sender() != currentTextEdit)
+    {
+        connect(currentTextEdit, &QTextEdit::cursorPositionChanged, this, &DialogGoToString::updateLinesCount);
+    }
+    int strCount = currentTextEdit->document()->blockCount();
+    m_lineNumber->setMaximum(strCount);
 }
