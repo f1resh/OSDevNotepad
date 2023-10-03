@@ -29,6 +29,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         mdimain.h mdimain.cpp
         copypastecut.h copypastecut.cpp
+        dialoggotostring.h dialoggotostring.cpp
         search.h search.cpp
         saveload.h saveload.cpp
         file_io.h file_io.cpp

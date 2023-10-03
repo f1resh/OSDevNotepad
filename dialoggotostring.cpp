@@ -62,11 +62,11 @@ int DialogGoToString::lineNumber() const
     return m_lineNumber->value();
 }
 
-QTextEdit *DialogGoToString::getCurrentTextEdit(QMdiArea* mainArea) {
+QTextEdit *DialogGoToString::getCurrentTextEdit(QMdiArea* mArea) {
 
-    if (!mainArea->subWindowList().isEmpty())
+    if (!mArea->subWindowList().isEmpty())
     {
-        QWidget* currentWidget = mainArea->currentSubWindow()->widget();
+        QWidget* currentWidget = mArea->currentSubWindow()->widget();
         if (currentWidget != nullptr)
         {
             QTextEdit *textEdit = qobject_cast<QTextEdit*>(currentWidget);
@@ -109,10 +109,12 @@ void DialogGoToString::moveCursorToString() {
     } else {
         int i = 0;
         while (i != stringNumber - 1) {
-            cursor.movePosition(QTextCursor::Down);
+            cursor.movePosition(QTextCursor::Down, QTextCursor::MoveAnchor);
+            qDebug() << cursor.position();
             i = cursor.blockNumber();
-        }
+        }        
         currentTextEdit->setTextCursor(cursor);
+
     }
 
 }

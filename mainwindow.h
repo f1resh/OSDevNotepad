@@ -20,5 +20,6 @@ private:
     class MdiMain *mdi;
     class SaveLoad *saveload;
     class CopyPasteCut* copypastecut;
+    class DialogGoToString *gotostring;
 };
 #endif // MAINWINDOW_H
