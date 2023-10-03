@@ -1,4 +1,5 @@
 #include "search.h"
+#include <QDebug>
 
 Search::Search(QMdiArea *mdi, QWidget *parent): QWidget(parent), mdiMain(mdi)
 {
@@ -195,6 +196,23 @@ void Search::initLayout(int index)
     }
 }
 
+void Search::showTab(int index)
+{
+    if (index >= tabWidget->count())
+    {
+        return;
+    }
+    this->findLineEditInit();
+    findDialog->activateWindow();
+    if (index != tabWidget->currentIndex())
+    {
+        this->initLayout(index);
+        tabWidget->setCurrentIndex(index);
+    }
+
+    findDialog->show();
+}
+
 void Search::clearTabLayout(QGridLayout *layout)
 {
     QLayoutItem *item;
@@ -220,6 +238,9 @@ void Search::init()
 
     findDialog = new QDialog(this);
     findDialog->setWindowTitle("Поикс и замена");
+    findDialog->setWindowFlags(findDialog->windowFlags() | Qt::MSWindowsFixedSizeDialogHint);//bugfix
+
+    connect(findDialog, &QDialog::finished, this, &Search::deleteLater);
 
     tabWidget = new QTabWidget(findDialog);
     connect(tabWidget, &QTabWidget::tabBarClicked, this, &Search::initLayout);
@@ -231,13 +252,6 @@ void Search::init()
     QWidget* replaceTab = new QWidget(tabWidget);
 
     findLineEdit = new QLineEdit(tabWidget);
-
-    QTextCursor currentCursor = currentTextEdit->textCursor();
-    QString selectedText = currentCursor.selectedText();
-    if (!selectedText.isEmpty())
-    {
-        findLineEdit->setText(selectedText);
-    }
 
     replaceLineEdit = new QLineEdit(tabWidget);
 
@@ -264,16 +278,34 @@ void Search::init()
     tabWidget->addTab(findTab, "Поиск");
     tabWidget->addTab(replaceTab, "Замена");
 
-    int tabCount = tabWidget->count();
-    while (tabCount)
-    {
-        this->initLayout(--tabCount);
-    }
 
     layout->addWidget(tabWidget);
     findDialog->setLayout(layout);
-    findDialog->show();
+
+    int tabCount = tabWidget->count();
+    while (tabCount)
+    {
+        this->showTab(--tabCount);
+    }
+
 }
+
+void Search::findLineEditInit()
+{
+    QTextEdit *currentTextEdit = this->getCurrentTextEdit();
+    if (currentTextEdit == nullptr)
+    {
+        return;
+    }
+    QTextCursor currentCursor = currentTextEdit->textCursor();
+    QString selectedText = currentCursor.selectedText();
+    if (!selectedText.isEmpty())
+    {
+        findLineEdit->setText(selectedText);
+    }
+}
+
+
 
 QTextEdit *Search::getCurrentTextEdit()
 {

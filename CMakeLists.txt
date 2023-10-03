@@ -31,6 +31,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         copypastecut.h copypastecut.cpp
         dialoggotostring.h dialoggotostring.cpp
         search.h search.cpp
+        searchcontroller.h searchcontroller.cpp
         saveload.h saveload.cpp
         file_io.h file_io.cpp
     )
