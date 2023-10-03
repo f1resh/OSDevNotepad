@@ -28,6 +28,7 @@ void DialogGoToString::init() {
         return;
     }
 
+    connect(this, &DialogGoToString::finished, this, &DialogGoToString::deleteLater);
     connect(mainArea, &QMdiArea::subWindowActivated, this, &DialogGoToString::updateLinesCount);
     connect(currentTextEdit, &QTextEdit::cursorPositionChanged, this, &DialogGoToString::updateLinesCount);
     int strCount = getStringsNumbers(currentTextEdit);
@@ -123,6 +124,10 @@ void DialogGoToString::moveCursorToString() {
 void DialogGoToString::updateLinesCount()
 {
     QTextEdit *currentTextEdit = this->getCurrentTextEdit(mainArea);
+    if (currentTextEdit == nullptr)
+    {
+        return;
+    }
     if (sender() != currentTextEdit)
     {
         connect(currentTextEdit, &QTextEdit::cursorPositionChanged, this, &DialogGoToString::updateLinesCount);

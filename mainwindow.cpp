@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionNew,SIGNAL(triggered()),mdi,SLOT(slotOpenNewDoc()));
     connect(ui->actionLoad,SIGNAL(triggered()),saveload,SLOT(LoadTabFromFile()));
     connect(ui->actionSave,SIGNAL(triggered()),saveload,SLOT(SaveActiveTabToFile()));
-    connect(ui->actionGoto, &QAction::triggered, this, [=](){gotostring = new DialogGoToString(mdi, mdi);});
+    connect(ui->actionGoto, SIGNAL(triggered()),searchcontroller,SLOT(openGoToDialog()));
     connect(ui->actionSearch,SIGNAL(triggered()),searchcontroller,SLOT(openFindTab()));
     connect(ui->actionReplace,SIGNAL(triggered()),searchcontroller,SLOT(openReplaceTab()));
 }

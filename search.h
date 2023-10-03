@@ -62,6 +62,8 @@ public slots:
      */
     void showTab(int index);
 
+    void exit();
+
 private:
 
     QDialog* findDialog{nullptr};           ///< Диалоговое окно для поиска и замены текста.
