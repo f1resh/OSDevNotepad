@@ -20,9 +20,6 @@ private:
     class MdiMain *mdi;
     class SaveLoad *saveload;
     class CopyPasteCut* copypastecut;
-    class DialogGoToString *gotostring;
     class SearchController* searchcontroller;
-
->>>>>>> DEV
 };
 #endif // MAINWINDOW_H
