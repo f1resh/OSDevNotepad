@@ -29,7 +29,7 @@ void SearchController::createGoTo()
     }
     DialogGoToString *gotostring = new DialogGoToString(mdiMain, mdiMain);
     this->invertGoToIsOpen();
-    connect(this, &SearchController::destroyed, gotostring, &Search::deleteLater);
+    connect(this, &SearchController::destroyed, gotostring, &DialogGoToString::deleteLater);
     connect(gotostring, &DialogGoToString::destroyed, this, &SearchController::invertGoToIsOpen);
     connect(this, &SearchController::openGoTo, gotostring, &DialogGoToString::activateWindow);
     connect(this, &SearchController::closeDialog, gotostring, &DialogGoToString::close);
