@@ -28,6 +28,9 @@ void DialogGoToString::init() {
         return;
     }
 
+    connect(this, &DialogGoToString::finished, this, &DialogGoToString::deleteLater);
+    connect(mainArea, &QMdiArea::subWindowActivated, this, &DialogGoToString::updateLinesCount);
+    connect(currentTextEdit, &QTextEdit::cursorPositionChanged, this, &DialogGoToString::updateLinesCount);
     int strCount = getStringsNumbers(currentTextEdit);
 
     m_lineNumber = new QSpinBox;
@@ -62,11 +65,11 @@ int DialogGoToString::lineNumber() const
     return m_lineNumber->value();
 }
 
-QTextEdit *DialogGoToString::getCurrentTextEdit(QMdiArea* mainArea) {
+QTextEdit *DialogGoToString::getCurrentTextEdit(QMdiArea* mArea) {
 
-    if (!mainArea->subWindowList().isEmpty())
+    if (!mArea->subWindowList().isEmpty())
     {
-        QWidget* currentWidget = mainArea->currentSubWindow()->widget();
+        QWidget* currentWidget = mArea->currentSubWindow()->widget();
         if (currentWidget != nullptr)
         {
             QTextEdit *textEdit = qobject_cast<QTextEdit*>(currentWidget);
@@ -111,8 +114,24 @@ void DialogGoToString::moveCursorToString() {
         while (i != stringNumber - 1) {
             cursor.movePosition(QTextCursor::Down);
             i = cursor.blockNumber();
-        }
+        }        
         currentTextEdit->setTextCursor(cursor);
     }
+    currentTextEdit->activateWindow();
 
+}
+
+void DialogGoToString::updateLinesCount()
+{
+    QTextEdit *currentTextEdit = this->getCurrentTextEdit(mainArea);
+    if (currentTextEdit == nullptr)
+    {
+        return;
+    }
+    if (sender() != currentTextEdit)
+    {
+        connect(currentTextEdit, &QTextEdit::cursorPositionChanged, this, &DialogGoToString::updateLinesCount);
+    }
+    int strCount = currentTextEdit->document()->blockCount();
+    m_lineNumber->setMaximum(strCount);
 }
