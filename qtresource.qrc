@@ -1,0 +1,17 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>Resources/Icons/new.png</file>
+    <file>Resources/Icons/open_file.png</file>
+    <file>Resources/Icons/save_document.png</file>
+    <file>Resources/Icons/save_document.png</file>
+    <file>Resources/Icons/copy.png</file>
+    <file>Resources/Icons/cut.png</file>
+    <file>Resources/Icons/goto.png</file>
+    <file>Resources/Icons/paste.png</file>
+    <file>Resources/Icons/print.png</file>
+    <file>Resources/Icons/redo.png</file>
+    <file>Resources/Icons/undo.png</file>
+    <file>Resources/Icons/search.png</file>
+    <file>Resources/Icons/replace.png</file>
+</qresource>
+</RCC>
