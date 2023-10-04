@@ -11,7 +11,12 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>OSDevNotepad</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <selectedon>:/Resources/Icons/icon.png</selectedon>
+   </iconset>
   </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
@@ -88,6 +93,9 @@
    </property>
    <property name="windowTitle">
     <string>toolBar</string>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
    </property>
    <property name="movable">
     <bool>false</bool>

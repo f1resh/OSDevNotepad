@@ -13,5 +13,6 @@
     <file>Resources/Icons/undo.png</file>
     <file>Resources/Icons/search.png</file>
     <file>Resources/Icons/replace.png</file>
+    <file>Resources/Icons/icon.png</file>
 </qresource>
 </RCC>
