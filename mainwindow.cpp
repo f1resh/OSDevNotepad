@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionSave,SIGNAL(triggered()),saveload,SLOT(SaveActiveTabToFile()));
     connect(ui->actionSearch,SIGNAL(triggered()),searchcontroller,SLOT(openFindTab()));
     connect(ui->actionReplace,SIGNAL(triggered()),searchcontroller,SLOT(openReplaceTab()));
+    connect(ui->actionPrint,SIGNAL(triggered()),mdi,SLOT(slotPrint()));
 }
 
 MainWindow::~MainWindow()
