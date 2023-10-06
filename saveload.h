@@ -1,16 +1,17 @@
 #pragma once
 #include <QMdiArea>
 #include <QDir>
+#include "mdimain.h"
 
 class SaveLoad : public QObject
 {
     Q_OBJECT
 private:
-    QMdiArea* mdi;
+    MdiMain* mdi;
     QString filters;
     QString path;
 public:
-    SaveLoad(QMdiArea* m) : mdi(m)
+    SaveLoad(MdiMain* m) : mdi(m)
     {
         filters = tr("Text file(*.txt)");
         path = QDir::homePath();

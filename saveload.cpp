@@ -9,11 +9,14 @@
 void SaveLoad::SaveActiveTabToFile()
 {
     if (mdi == nullptr) return;
+
+    QTextEdit* tEdit = mdi->getActiveDocument();
+    if (tEdit==nullptr) return;
+
     QMdiSubWindow* active = mdi->activeSubWindow();
-    if (active == nullptr) return;
 
     FileIO file(filters,path);
-    QString content = (qobject_cast<QTextEdit*>(active->widget()))->toPlainText();
+    QString content = tEdit->toPlainText();
     if (file.Save(content)){
         QFileInfo fInfo(file.getFileName());
         active->setWindowTitle(fInfo.fileName());

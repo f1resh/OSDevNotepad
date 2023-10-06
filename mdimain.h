@@ -14,8 +14,11 @@ class MdiMain : public QMdiArea
 public:
     MdiMain(QWidget *parent = nullptr);
 
+    QTextEdit* getActiveDocument();
+
 public slots:
     void slotOpenNewDoc();
+    void slotPrint();
 
 signals:
 
