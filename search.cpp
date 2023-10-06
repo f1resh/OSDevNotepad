@@ -213,6 +213,11 @@ void Search::showTab(int index)
     findDialog->show();
 }
 
+void Search::exit()
+{
+    findDialog->close();
+}
+
 void Search::clearTabLayout(QGridLayout *layout)
 {
     QLayoutItem *item;

@@ -21,6 +21,5 @@ private:
     class SaveLoad *saveload;
     class CopyPasteCut* copypastecut;
     class SearchController* searchcontroller;
-
 };
 #endif // MAINWINDOW_H

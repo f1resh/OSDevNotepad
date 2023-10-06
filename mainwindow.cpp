@@ -4,6 +4,7 @@
 #include "mdimain.h"
 #include "saveload.h"
 #include "copypastecut.h"
+#include "dialoggotostring.h"
 #include "searchcontroller.h"
 
 #define RELEASE(p) if (p) {delete p; p = NULL;}
@@ -27,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionNew,SIGNAL(triggered()),mdi,SLOT(slotOpenNewDoc()));
     connect(ui->actionLoad,SIGNAL(triggered()),saveload,SLOT(LoadTabFromFile()));
     connect(ui->actionSave,SIGNAL(triggered()),saveload,SLOT(SaveActiveTabToFile()));
+    connect(ui->actionGoto, SIGNAL(triggered()),searchcontroller,SLOT(openGoToDialog()));
     connect(ui->actionSearch,SIGNAL(triggered()),searchcontroller,SLOT(openFindTab()));
     connect(ui->actionReplace,SIGNAL(triggered()),searchcontroller,SLOT(openReplaceTab()));
 }

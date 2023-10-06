@@ -19,15 +19,22 @@ public:
 private:
     QMdiArea *mdiMain{nullptr};
     bool searchIsOpen{false};
+    bool gotoIsOpen{false};
     void createSearch();
+    void createGoTo();
 
 signals:
-    void openTab(int);
+    void openSearchTab(int);
+    void openGoTo();
+    void closeDialog();
 
 public slots:
     void openFindTab();
     void openReplaceTab();
+    void openGoToDialog();
 
-public slots:
+private slots:
     void invertSearchIsOpen();
+    void invertGoToIsOpen();
+    void closeDialogWindow();
 };
