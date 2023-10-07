@@ -15,7 +15,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    //create an object of mdiMain class
     mdi = new MdiMain(this);
     MainWindow::setCentralWidget(mdi);
 
@@ -28,6 +27,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionNew,SIGNAL(triggered()),mdi,SLOT(slotOpenNewDoc()));
     connect(ui->actionLoad,SIGNAL(triggered()),saveload,SLOT(LoadTabFromFile()));
     connect(ui->actionSave,SIGNAL(triggered()),saveload,SLOT(SaveActiveTabToFile()));
+    connect(ui->actionUndo,SIGNAL(triggered()),mdi,SLOT(slotUndo()));
+    connect(ui->actionRedo,SIGNAL(triggered()),mdi,SLOT(slotRedo()));
+    connect(ui->actionClose,SIGNAL(triggered()),mdi,SLOT(slotClose()));
     connect(ui->actionGoto, SIGNAL(triggered()),searchcontroller,SLOT(openGoToDialog()));
     connect(ui->actionSearch,SIGNAL(triggered()),searchcontroller,SLOT(openFindTab()));
     connect(ui->actionReplace,SIGNAL(triggered()),searchcontroller,SLOT(openReplaceTab()));

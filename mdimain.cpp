@@ -33,6 +33,30 @@ void MdiMain::slotPrint()
     }
 }
 
+void MdiMain::slotUndo()
+{
+    QTextEdit* textEdit = getActiveDocument();
+    if (textEdit) {
+        textEdit->undo();
+    }
+}
+
+void MdiMain::slotRedo()
+{
+    QTextEdit* textEdit = getActiveDocument();
+    if (textEdit) {
+        textEdit->redo();
+    }
+}
+
+void MdiMain::slotClose()
+{
+    QMdiSubWindow* active = currentSubWindow();
+    if (active) {
+        active->close();
+    }
+}
+
 //to do
 void MdiMain::nameDoc()
 {

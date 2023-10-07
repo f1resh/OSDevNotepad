@@ -19,7 +19,9 @@ public:
 public slots:
     void slotOpenNewDoc();
     void slotPrint();
-
+    void slotUndo();
+    void slotRedo();
+    void slotClose();
 signals:
 
 private:
