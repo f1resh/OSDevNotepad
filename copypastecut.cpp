@@ -38,7 +38,31 @@ void CopyPasteCut::slotCutText()
         if (!selectedText.isEmpty())
         {
             clipboard->setText(selectedText);
-            activeTextEdit->cut();
+            activeTextEdit->textCursor().removeSelectedText();
+        }
+    }
+}
+
+void CopyPasteCut::slotSelectAll()
+{
+    QTextEdit* activeTextEdit = mdi->getActiveDocument();
+    if (activeTextEdit){
+        activeTextEdit->selectAll();
+    }
+}
+
+void CopyPasteCut::slotDeleteText()
+{
+    QTextEdit* activeTextEdit = mdi->getActiveDocument();
+    if (activeTextEdit){
+        QTextCursor cursor = activeTextEdit->textCursor();
+        if (cursor.hasSelection())
+        {
+            cursor.removeSelectedText();
+        }
+        else
+        {
+            cursor.deleteChar();
         }
     }
 }

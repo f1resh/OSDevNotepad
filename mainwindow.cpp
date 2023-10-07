@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionClose,SIGNAL(triggered()),mdi,SLOT(slotClose()));
     connect(ui->actionCopy,SIGNAL(triggered()),copypastecut,SLOT(slotCopyToClipboard()));
     connect(ui->actionCut,SIGNAL(triggered()),copypastecut,SLOT(slotCutText()));
+    connect(ui->actionSelectAll,SIGNAL(triggered()),copypastecut,SLOT(slotSelectAll()));
+    connect(ui->actionDelete,SIGNAL(triggered()),copypastecut,SLOT(slotDeleteText()));
     connect(ui->actionPaste,SIGNAL(triggered()),copypastecut,SLOT(slotPasteFromClipboard()));
     connect(ui->actionGoto, SIGNAL(triggered()),searchcontroller,SLOT(openGoToDialog()));
     connect(ui->actionSearch,SIGNAL(triggered()),searchcontroller,SLOT(openFindTab()));

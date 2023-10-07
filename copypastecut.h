@@ -22,5 +22,7 @@ public slots:
     void slotCopyToClipboard();
     void slotPasteFromClipboard();
     void slotCutText();
+    void slotSelectAll();
+    void slotDeleteText();
 
 };
