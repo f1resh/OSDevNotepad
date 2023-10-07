@@ -11,6 +11,7 @@
  */
 class StatusBar: public QStatusBar
 {
+    Q_OBJECT
 public:
     /**
      * @brief Конструктор класса StatusBar.
