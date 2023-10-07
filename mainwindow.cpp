@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "./ui_mainwindow.h"
+#include "ui_mainwindow.h"
 
 #include "mdimain.h"
 #include "qobjectdefs.h"
@@ -7,6 +7,7 @@
 #include "copypastecut.h"
 #include "dialoggotostring.h"
 #include "searchcontroller.h"
+#include "statusbar.h"
 
 #define RELEASE(p) if (p) {delete p; p = NULL;}
 
@@ -23,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     saveload = new SaveLoad(mdi);
     copypastecut = new CopyPasteCut(mdi);
     searchcontroller = new SearchController(mdi, mdi);
+    this->setStatusBar(new StatusBar(mdi));
 
     connect(ui->actionExit,SIGNAL(triggered()),this,SLOT(close()));
     connect(ui->actionNew,SIGNAL(triggered()),mdi,SLOT(slotOpenNewDoc()));
