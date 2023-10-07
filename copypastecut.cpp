@@ -1,59 +1,68 @@
 #include "copypastecut.h"
 
-void CopyPasteCut::copyToClipboard()
+void CopyPasteCut::slotCopyToClipboard()
 {
-    QWidget* wgt = mdi->currentSubWindow()->widget();
-    if (wgt != nullptr)
-    {
-        QTextEdit* activeTextEdit = qobject_cast<QTextEdit*>(wgt);
-        if (activeTextEdit != nullptr)
+    QTextEdit* activeTextEdit = mdi->getActiveDocument();
+    if (activeTextEdit){
+        QClipboard *clipboard;
+        clipboard = QApplication::clipboard();
+        QString selectedText = activeTextEdit->textCursor().selectedText();
+        if (!selectedText.isEmpty())
         {
-            QClipboard *clipboard;
-            clipboard = QApplication::clipboard();
-            QString selectedText = activeTextEdit->textCursor().selectedText();
-            if (!selectedText.isEmpty())
-            {
-                clipboard->setText(selectedText);
-            }
+            clipboard->setText(selectedText);
         }
     }
 }
 
-void CopyPasteCut::pasteFromClipboard()
+void CopyPasteCut::slotPasteFromClipboard()
 {
-    QWidget* wgt = mdi->currentSubWindow()->widget();
-    if (wgt != nullptr)
-    {
-        QTextEdit* activeTextEdit = qobject_cast<QTextEdit*>(wgt);
-        if (activeTextEdit != nullptr)
+    QTextEdit* activeTextEdit = mdi->getActiveDocument();
+    if (activeTextEdit){
+        QClipboard *clipboard;
+        clipboard = QApplication::clipboard();
+        QString clipboardText = clipboard->text();
+        if (!clipboardText.isEmpty())
         {
-            QClipboard *clipboard;
-            clipboard = QApplication::clipboard();
-            QString clipboardText = clipboard->text();
-            if (!clipboardText.isEmpty())
-            {
-                activeTextEdit->insertPlainText(clipboardText);
-            }
+            activeTextEdit->insertPlainText(clipboardText);
         }
     }
 }
 
-void CopyPasteCut::cutText()
+void CopyPasteCut::slotCutText()
 {
-    QWidget* wgt = mdi->currentSubWindow()->widget();
-    if (wgt != nullptr)
-    {
-        QTextEdit* activeTextEdit = qobject_cast<QTextEdit*>(wgt);
-        if (activeTextEdit != nullptr)
+    QTextEdit* activeTextEdit = mdi->getActiveDocument();
+    if (activeTextEdit){
+        QClipboard *clipboard;
+        clipboard = QApplication::clipboard();
+        QString selectedText = activeTextEdit->textCursor().selectedText();
+        if (!selectedText.isEmpty())
         {
-            QClipboard *clipboard;
-            clipboard = QApplication::clipboard();
-            QString selectedText = activeTextEdit->textCursor().selectedText();
-            if (!selectedText.isEmpty())
-            {
-                clipboard->setText(selectedText);
-                activeTextEdit->cut();
-            }
+            clipboard->setText(selectedText);
+            activeTextEdit->textCursor().removeSelectedText();
+        }
+    }
+}
+
+void CopyPasteCut::slotSelectAll()
+{
+    QTextEdit* activeTextEdit = mdi->getActiveDocument();
+    if (activeTextEdit){
+        activeTextEdit->selectAll();
+    }
+}
+
+void CopyPasteCut::slotDeleteText()
+{
+    QTextEdit* activeTextEdit = mdi->getActiveDocument();
+    if (activeTextEdit){
+        QTextCursor cursor = activeTextEdit->textCursor();
+        if (cursor.hasSelection())
+        {
+            cursor.removeSelectedText();
+        }
+        else
+        {
+            cursor.deleteChar();
         }
     }
 }
