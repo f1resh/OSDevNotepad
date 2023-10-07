@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 
 #include "mdimain.h"
+#include "qobjectdefs.h"
 #include "saveload.h"
 #include "copypastecut.h"
 #include "dialoggotostring.h"
@@ -30,6 +31,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionUndo,SIGNAL(triggered()),mdi,SLOT(slotUndo()));
     connect(ui->actionRedo,SIGNAL(triggered()),mdi,SLOT(slotRedo()));
     connect(ui->actionClose,SIGNAL(triggered()),mdi,SLOT(slotClose()));
+    connect(ui->actionCopy,SIGNAL(triggered()),copypastecut,SLOT(slotCopyToClipboard()));
+    connect(ui->actionCut,SIGNAL(triggered()),copypastecut,SLOT(slotCutText()));
+    connect(ui->actionPaste,SIGNAL(triggered()),copypastecut,SLOT(slotPasteFromClipboard()));
     connect(ui->actionGoto, SIGNAL(triggered()),searchcontroller,SLOT(openGoToDialog()));
     connect(ui->actionSearch,SIGNAL(triggered()),searchcontroller,SLOT(openFindTab()));
     connect(ui->actionReplace,SIGNAL(triggered()),searchcontroller,SLOT(openReplaceTab()));

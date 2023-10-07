@@ -4,24 +4,23 @@
 #include <QTextEdit.h>
 #include <QtGui/QClipboard>
 #include <QtWidgets/QApplication>
+#include "mdimain.h"
 
 class CopyPasteCut : public QObject
 {
     Q_OBJECT
 
 private:
-    QMdiArea* mdi;
+    MdiMain* mdi;
 public:
-    CopyPasteCut(QMdiArea* m) : mdi(m)
+    CopyPasteCut(MdiMain* m) : mdi(m)
     {
 
     };
 
 public slots:
-    void copyToClipboard();
-
-    void pasteFromClipboard();
-
-    void cutText();
+    void slotCopyToClipboard();
+    void slotPasteFromClipboard();
+    void slotCutText();
 
 };
