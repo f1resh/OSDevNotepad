@@ -4,6 +4,8 @@
 #include <QLocale>
 #include <QTranslator>
 
+extern QString version {"1.0"};
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

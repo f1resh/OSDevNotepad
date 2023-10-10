@@ -8,8 +8,11 @@
 #include "dialoggotostring.h"
 #include "searchcontroller.h"
 #include "statusbar.h"
+#include <QMessageBox>
 
 #define RELEASE(p) if (p) {delete p; p = NULL;}
+
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -56,5 +59,11 @@ void MainWindow::initSignals()
     connect(ui->actionSearch,SIGNAL(triggered()),searchcontroller,SLOT(openFindTab()));
     connect(ui->actionReplace,SIGNAL(triggered()),searchcontroller,SLOT(openReplaceTab()));
     connect(ui->actionPrint,SIGNAL(triggered()),mdi,SLOT(slotPrint()));
+    connect(ui->actionAbout,SIGNAL(triggered()),this,SLOT(slotShowAbout()));
+}
+
+void MainWindow::slotShowAbout()
+{
+    QMessageBox::about(this,"About OSDevNotepad","OSDevNotepad v."+version+" by Boring Programmers");
 }
 

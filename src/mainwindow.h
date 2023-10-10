@@ -7,6 +7,8 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+extern QString version;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -23,5 +25,8 @@ private:
     class SearchController* searchcontroller;
 
     void initSignals();
+
+private slots:
+    void slotShowAbout();
 };
 #endif // MAINWINDOW_H
