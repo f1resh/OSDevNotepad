@@ -15,8 +15,8 @@
 #include <QEventLoop>
 
 /**
- * @class Search
- * @brief Класс для поиска и замены текста в QTextEdit с использованием QMdiArea. Все методы класса применяются к текущему на момент выполнения документу.
+ * @class Класс Search
+ * @brief Класс для поиска и замены текста в текущем документе многодокументного окна.
  */
 class Search: public QWidget
 {
@@ -26,7 +26,7 @@ public:
 
     /**
      * @brief Конструктор класса Search.
-     * @param mdi Указатель на QMdiArea, в котором выполняется поиск и замена текста.
+     * @param mdi Указатель на объект многодокументного окна.
      * @param parent Родительский виджет (по умолчанию nullptr).
      */
     Search(QMdiArea *mdi, QWidget *parent = nullptr);
@@ -62,26 +62,29 @@ public slots:
      */
     void showTab(int index);
 
+    /**
+     * @brief Слот закрытия диалогового окна.
+     */
     void exit();
 
 private:
 
-    QDialog* findDialog{nullptr};           ///< Диалоговое окно для поиска и замены текста.
-    QTabWidget *tabWidget{nullptr};         ///< Виджет вкладок для функций поиска и замены.
-    QMdiArea *mdiMain{nullptr};             ///< Указатель на главное окно QMdiArea.
+    QDialog* findDialog{nullptr};            /**< Диалоговое окно для поиска и замены текста.*/
+    QTabWidget *tabWidget{nullptr};          /**< Виджет вкладок для функций поиска и замены.*/
+    QMdiArea *mdiMain{nullptr};              /**< Указатель на объект многодокументного окна.*/
 
-    QLabel *findLabel{nullptr};             ///< Подпись поля ввода текста для поиска.
-    QLineEdit* findLineEdit{nullptr};       ///< Поле ввода текста для поиска.
-    QPushButton* findPrevButton{nullptr};   ///< Кнопка для поиска предыдущего фрагмента текста.
-    QPushButton* findNextButton{nullptr};   ///< Кнопка для поиска следующего фрагмента текста.
+    QLabel *findLabel{nullptr};              /**< Подпись поля ввода текста для поиска.*/
+    QLineEdit* findLineEdit{nullptr};        /**< Поле ввода текста для поиска.*/
+    QPushButton* findPrevButton{nullptr};    /**< Кнопка для поиска предыдущего фрагмента текста.*/
+    QPushButton* findNextButton{nullptr};    /**< Кнопка для поиска следующего фрагмента текста.*/
 
-    QLabel *replaceLabel{nullptr};          ///< Подпись поля ввода текста для замены.
-    QLineEdit* replaceLineEdit{nullptr};    ///< Поле ввода текста для замены.
-    QPushButton* replacePrevButton{nullptr};///< Кнопка для замены текущего результата и поиска предыдущего фрагмента текста.
-    QPushButton* replaceNextButton{nullptr};///< Кнопка для замены текущего результата и поиска следующего фрагмента текста.
-    QPushButton* replaceAllButton{nullptr}; ///< Кнопка для замены всех найденных фрагментов текста.
+    QLabel *replaceLabel{nullptr};           /**< Подпись поля ввода текста для замены.*/
+    QLineEdit* replaceLineEdit{nullptr};     /**< Поле ввода текста для замены.*/
+    QPushButton* replacePrevButton{nullptr}; /**< Кнопка для замены текущего результата и поиска предыдущего фрагмента текста.*/
+    QPushButton* replaceNextButton{nullptr}; /**< Кнопка для замены текущего результата и поиска следующего фрагмента текста.*/
+    QPushButton* replaceAllButton{nullptr};  /**< Кнопка для замены всех найденных фрагментов текста.*/
 
-    QLabel* resultLabel{nullptr};           ///< Метка для отображения результатов поиска и замены.
+    QLabel* resultLabel{nullptr};            /**< Метка для отображения результатов поиска и замены.*/
 
     /**
      * @brief Метод для очистки макета вкладки.
@@ -99,7 +102,7 @@ private:
      */
     void findLineEditInit();
 
-    bool findStatus{false};                 ///< Флаг состояния поиска (true, если найдено хотя бы одно совпадение).
+    bool findStatus{false};                  /**< Флаг состояния поиска (true, если найдено хотя бы одно совпадение).*/
 
     /**
      * @brief Метод для получения указателя на текущий QTextEdit в QMdiArea.
@@ -107,6 +110,6 @@ private:
      */
     QTextEdit* getCurrentTextEdit();
 
-    quint32 replaceCounter{0};              ///< Счетчик замен.
+    quint32 replaceCounter{0};               /**< Счетчик замен.*/
 
 };

@@ -14,8 +14,8 @@ enum class Tab
 };
 
 /**
- * @class SearchController
- * @brief Класс SearchController представляет контроллер для управления диалогами поиска и замены текста и перехода к строке.
+ * @class Класс SearchController
+ * @brief Контроллер для управления диалогами поиска и замены текста и перехода к строке.
  *
  * Этот класс обеспечивает создание и управление диалоговыми окнами для поиска, замены и перехода к определенной позиции в тексте.
  */
@@ -26,13 +26,13 @@ class SearchController: public QObject
 public:
     /**
      * @brief Конструктор класса SearchController.
-     * @param[in] mdi Указатель на объект многодокоментного окна QMdiArea.
-     * @param[in] parent Указатель на родительский объект.
+     * @param mdi Указатель на объект многодокоментного окна.
+     * @param parent Указатель на родительский объект.
      */
     SearchController(QMdiArea *mdi, QObject* parent = nullptr);
 
 private:
-    QMdiArea *mdiMain{nullptr};         /**< Указатель на объект класса QMdiArea. */
+    QMdiArea *mdiMain{nullptr};         /**< Указатель на объект многодокоментного окна. */
     bool searchIsOpen{false};           /**< Флаг открытия диалога поиска. */
     bool gotoIsOpen{false};             /**< Флаг открытия диалога перехода к определенной строке. */
 
@@ -47,9 +47,10 @@ private:
     void createGoTo();
 
 signals:
+
     /**
      * @brief Сигнал для открытия вкладки поиска или замены текста.
-     * @param[in] int Текущая вкладка (Tab::Find или Tab::Replace).
+     * @param int Текущая вкладка (Tab::Find или Tab::Replace).
      */
     void openSearchTab(int);
 

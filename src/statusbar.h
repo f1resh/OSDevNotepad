@@ -3,8 +3,8 @@
 #include <QStatusBar>
 
 /**
- * @class StatusBar
- * @brief Класс StatusBar представляет пользовательский виджет для отображения информации в строке состояния.
+ * @class Класс StatusBar
+ * @brief Виджет для отображения информации в строке состояния.
  *
  * Этот класс наследует функциональность QStatusBar и предоставляет дополнительные метки для отображения
  * информации о символах, строках и текущей позиции курсора в текстовом редакторе.
@@ -15,7 +15,7 @@ class StatusBar: public QStatusBar
 public:
     /**
      * @brief Конструктор класса StatusBar.
-     * @param[in] mdi Указатель на объект класса MdiMain.
+     * @param mdi Указатель на объект многодокументного окна.
      */
     StatusBar(class MdiMain* mdi);
 
@@ -31,7 +31,7 @@ private slots:
     void changeTxt();
 
 private:
-    MdiMain *mdiMain;                       /**< Указатель на объект многодокументного окна MdiMain. */
+    MdiMain *mdiMain;                       /**< Указатель на объект многодокументного окна. */
     class QTextEdit *txt;                   /**< Указатель на текущий документ. */
 
     class QLabel *symbolsAndLinesLabel;     /**< Метка для отображения информации о символах и строках. */
@@ -40,7 +40,7 @@ private:
     bool isActive{false};                   /**< Флаг активности меток. */
 
     /**
-     * @brief Метод для инициализации виджета StatusBar.
+     * @brief Метод для инициализации виджета.
      */
     void init();
 
