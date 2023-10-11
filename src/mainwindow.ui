@@ -35,7 +35,6 @@
     <addaction name="actionNew"/>
     <addaction name="actionLoad"/>
     <addaction name="actionSave"/>
-    <addaction name="actionSaveAs"/>
     <addaction name="actionClose"/>
     <addaction name="separator"/>
     <addaction name="actionPrint"/>
@@ -160,11 +159,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
-   </property>
-  </action>
-  <action name="actionSaveAs">
-   <property name="text">
-    <string>Сохранить как</string>
    </property>
   </action>
   <action name="actionClose">
@@ -327,14 +321,6 @@
   <action name="actionAbout">
    <property name="text">
     <string>О программе</string>
-   </property>
-  </action>
-  <action name="actionHelp">
-   <property name="text">
-    <string>Справка</string>
-   </property>
-   <property name="shortcut">
-    <string>F1</string>
    </property>
   </action>
  </widget>
