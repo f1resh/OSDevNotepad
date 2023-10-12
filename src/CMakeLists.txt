@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(BoringNotepad VERSION 0.1 LANGUAGES CXX)
+project(OSDevNotepad VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -13,7 +13,7 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS PrintSupport)
 
-set(TS_FILES Translation/BoringNotepad_ru_RU.ts)
+set(TS_FILES Translation/OSDevNotepad_ru_RU.ts)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -24,7 +24,7 @@ set(PROJECT_SOURCES
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(BoringNotepad
+    qt_add_executable(OSDevNotepad
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
 
@@ -47,13 +47,13 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 else()
     if(ANDROID)
-        add_library(BoringNotepad SHARED
+        add_library(OSDevNotepad SHARED
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
-        add_executable(BoringNotepad
+        add_executable(OSDevNotepad
             ${PROJECT_SOURCES}
         )
     endif()
@@ -61,16 +61,16 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-target_link_libraries(BoringNotepad PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-target_link_libraries(BoringNotepad PRIVATE Qt${QT_VERSION_MAJOR}::PrintSupport)
+target_link_libraries(OSDevNotepad PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(OSDevNotepad PRIVATE Qt${QT_VERSION_MAJOR}::PrintSupport)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
 if(${QT_VERSION} VERSION_LESS 6.1.0)
-  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.BoringNotepad)
+  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.OSDevNotepad)
 endif()
-set_target_properties(BoringNotepad PROPERTIES
+set_target_properties(OSDevNotepad PROPERTIES
     ${BUNDLE_ID_OPTION}
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -79,12 +79,12 @@ set_target_properties(BoringNotepad PROPERTIES
 )
 
 include(GNUInstallDirs)
-install(TARGETS BoringNotepad
+install(TARGETS OSDevNotepad
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(BoringNotepad)
+    qt_finalize_executable(OSDevNotepad)
 endif()
