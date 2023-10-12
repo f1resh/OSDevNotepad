@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OSDevNotepad: Исходный файл D:/GB/Team3/OSDevNotepad/src/file_io.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">OSDevNotepad<span id="projectnumber">&#160;v.1.0</span>
+   </div>
+   <div id="projectbrief">Кросс-платформенный текстовый редактор с оконным мультидокументным интерфейсом.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('file__io_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">file_io.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;QDir&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_file_i_o.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="class_file_i_o.html">FileIO</a></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    QString content_ = <span class="stringliteral">&quot;&quot;</span>;      </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    QDir path_;                 </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    QString filters_;           </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    QString filename_;          </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_file_i_o.html#ab780f6edd89171c0864e04356b5e3c90">   24</a></span>    <a class="code hl_function" href="class_file_i_o.html#ab780f6edd89171c0864e04356b5e3c90">FileIO</a>(<span class="keyword">const</span> QString&amp; filters, <span class="keyword">const</span> QDir&amp; path) : filters_(filters), path_(path) {};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_function" href="class_file_i_o.html#a8b0d602c3461181e12c05f655dea5018">FileIO</a>();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_function" href="class_file_i_o.html#adc3caa8f1e5d76274d8ffb8b5c17288b">~FileIO</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_file_i_o.html#a46c4f35ef13fb1d4b4809d9a7ba8ba69">Load</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_file_i_o.html#aa8d2c50fc8e92eab7e590db6523fff90">Save</a>(QString&amp;);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    QString <a class="code hl_function" href="class_file_i_o.html#abbd29b008b4e5bb1e13bf58a12242de1">getFileName</a>();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    QString <a class="code hl_function" href="class_file_i_o.html#a998b41ae1d5134068b0460f3f4a31bd2">getContent</a>();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>};</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="ttc" id="aclass_file_i_o_html"><div class="ttname"><a href="class_file_i_o.html">FileIO</a></div><div class="ttdoc">Класс для работы с файлами (чтение и запись).</div><div class="ttdef"><b>Definition</b> file_io.h:11</div></div>
+<div class="ttc" id="aclass_file_i_o_html_a46c4f35ef13fb1d4b4809d9a7ba8ba69"><div class="ttname"><a href="class_file_i_o.html#a46c4f35ef13fb1d4b4809d9a7ba8ba69">FileIO::Load</a></div><div class="ttdeci">bool Load()</div><div class="ttdoc">Метод загрузки содержимого файла.</div><div class="ttdef"><b>Definition</b> file_io.cpp:16</div></div>
+<div class="ttc" id="aclass_file_i_o_html_a8b0d602c3461181e12c05f655dea5018"><div class="ttname"><a href="class_file_i_o.html#a8b0d602c3461181e12c05f655dea5018">FileIO::FileIO</a></div><div class="ttdeci">FileIO()</div><div class="ttdoc">Конструктор по умолчанию класса FileIO.</div><div class="ttdef"><b>Definition</b> file_io.cpp:6</div></div>
+<div class="ttc" id="aclass_file_i_o_html_a998b41ae1d5134068b0460f3f4a31bd2"><div class="ttname"><a href="class_file_i_o.html#a998b41ae1d5134068b0460f3f4a31bd2">FileIO::getContent</a></div><div class="ttdeci">QString getContent()</div><div class="ttdoc">Возвращает содержимое текущего файла.</div><div class="ttdef"><b>Definition</b> file_io.cpp:72</div></div>
+<div class="ttc" id="aclass_file_i_o_html_aa8d2c50fc8e92eab7e590db6523fff90"><div class="ttname"><a href="class_file_i_o.html#aa8d2c50fc8e92eab7e590db6523fff90">FileIO::Save</a></div><div class="ttdeci">bool Save(QString &amp;)</div><div class="ttdoc">Метод сохранения текста в файл.</div><div class="ttdef"><b>Definition</b> file_io.cpp:40</div></div>
+<div class="ttc" id="aclass_file_i_o_html_ab780f6edd89171c0864e04356b5e3c90"><div class="ttname"><a href="class_file_i_o.html#ab780f6edd89171c0864e04356b5e3c90">FileIO::FileIO</a></div><div class="ttdeci">FileIO(const QString &amp;filters, const QDir &amp;path)</div><div class="ttdoc">Конструктор класса FileIO.</div><div class="ttdef"><b>Definition</b> file_io.h:24</div></div>
+<div class="ttc" id="aclass_file_i_o_html_abbd29b008b4e5bb1e13bf58a12242de1"><div class="ttname"><a href="class_file_i_o.html#abbd29b008b4e5bb1e13bf58a12242de1">FileIO::getFileName</a></div><div class="ttdeci">QString getFileName()</div><div class="ttdoc">Возвращает имя текущего файла.</div><div class="ttdef"><b>Definition</b> file_io.cpp:67</div></div>
+<div class="ttc" id="aclass_file_i_o_html_adc3caa8f1e5d76274d8ffb8b5c17288b"><div class="ttname"><a href="class_file_i_o.html#adc3caa8f1e5d76274d8ffb8b5c17288b">FileIO::~FileIO</a></div><div class="ttdeci">~FileIO()</div><div class="ttdoc">Деструктор класса FileIO.</div><div class="ttdef"><b>Definition</b> file_io.cpp:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><b>file_io.h</b></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

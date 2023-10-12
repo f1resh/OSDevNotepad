@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OSDevNotepad: Исходный файл D:/GB/Team3/OSDevNotepad/src/copypastecut.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="icon.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">OSDevNotepad<span id="projectnumber">&#160;v.1.0</span>
+   </div>
+   <div id="projectbrief">Кросс-платформенный текстовый редактор с оконным мультидокументным интерфейсом.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('copypastecut_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">copypastecut.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;QMdiArea&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;QMdiSubWindow&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;QTextEdit.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;QtGui/QClipboard&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;QtWidgets/QApplication&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;mdimain.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_copy_paste_cut.html">   13</a></span><span class="keyword">class </span><a class="code hl_class" href="class_copy_paste_cut.html">CopyPasteCut</a> : <span class="keyword">public</span> QObject</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    Q_OBJECT</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_class" href="class_mdi_main.html">MdiMain</a>* mdi;        </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_copy_paste_cut.html#ab225f11955a110e4b10dac8d2329086b">   25</a></span>    <a class="code hl_function" href="class_copy_paste_cut.html#ab225f11955a110e4b10dac8d2329086b">CopyPasteCut</a>(<a class="code hl_class" href="class_mdi_main.html">MdiMain</a>* m) : mdi(m)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    };</div>
+</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">public</span> slots:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_copy_paste_cut.html#aa03e4dacf98482e4009890d066b272cb">slotCopyToClipboard</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_copy_paste_cut.html#aaf5816d28dcc39a9fa6c01df5c495b8c">slotPasteFromClipboard</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_copy_paste_cut.html#a7c311c14c9ffe900bf9974ebd9274a15">slotCutText</a>();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_copy_paste_cut.html#aef0c72a3823e0b7564f884959bf9991f">slotSelectAll</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_copy_paste_cut.html#a27d3408e1f108b0d4beb47058821b396">slotDeleteText</a>();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>};</div>
+</div>
+<div class="ttc" id="aclass_copy_paste_cut_html"><div class="ttname"><a href="class_copy_paste_cut.html">CopyPasteCut</a></div><div class="ttdoc">Класс функций копирования, вставки, вырезания и удаления текста.</div><div class="ttdef"><b>Definition</b> copypastecut.h:14</div></div>
+<div class="ttc" id="aclass_copy_paste_cut_html_a27d3408e1f108b0d4beb47058821b396"><div class="ttname"><a href="class_copy_paste_cut.html#a27d3408e1f108b0d4beb47058821b396">CopyPasteCut::slotDeleteText</a></div><div class="ttdeci">void slotDeleteText()</div><div class="ttdoc">Слот для удаления выделенного текста либо символа после курсора при отсутвии выделенного фрагмента.</div><div class="ttdef"><b>Definition</b> copypastecut.cpp:54</div></div>
+<div class="ttc" id="aclass_copy_paste_cut_html_a7c311c14c9ffe900bf9974ebd9274a15"><div class="ttname"><a href="class_copy_paste_cut.html#a7c311c14c9ffe900bf9974ebd9274a15">CopyPasteCut::slotCutText</a></div><div class="ttdeci">void slotCutText()</div><div class="ttdoc">Слот для вырезания выделенного текста и копирования его в буфер обмена.</div><div class="ttdef"><b>Definition</b> copypastecut.cpp:31</div></div>
+<div class="ttc" id="aclass_copy_paste_cut_html_aa03e4dacf98482e4009890d066b272cb"><div class="ttname"><a href="class_copy_paste_cut.html#aa03e4dacf98482e4009890d066b272cb">CopyPasteCut::slotCopyToClipboard</a></div><div class="ttdeci">void slotCopyToClipboard()</div><div class="ttdoc">Слот для копирования выделенного текста в буфер обмена.</div><div class="ttdef"><b>Definition</b> copypastecut.cpp:3</div></div>
+<div class="ttc" id="aclass_copy_paste_cut_html_aaf5816d28dcc39a9fa6c01df5c495b8c"><div class="ttname"><a href="class_copy_paste_cut.html#aaf5816d28dcc39a9fa6c01df5c495b8c">CopyPasteCut::slotPasteFromClipboard</a></div><div class="ttdeci">void slotPasteFromClipboard()</div><div class="ttdoc">Слот для вставки текста из буфера обмена.</div><div class="ttdef"><b>Definition</b> copypastecut.cpp:17</div></div>
+<div class="ttc" id="aclass_copy_paste_cut_html_ab225f11955a110e4b10dac8d2329086b"><div class="ttname"><a href="class_copy_paste_cut.html#ab225f11955a110e4b10dac8d2329086b">CopyPasteCut::CopyPasteCut</a></div><div class="ttdeci">CopyPasteCut(MdiMain *m)</div><div class="ttdoc">Конструктор класса CopyPasteCut.</div><div class="ttdef"><b>Definition</b> copypastecut.h:25</div></div>
+<div class="ttc" id="aclass_copy_paste_cut_html_aef0c72a3823e0b7564f884959bf9991f"><div class="ttname"><a href="class_copy_paste_cut.html#aef0c72a3823e0b7564f884959bf9991f">CopyPasteCut::slotSelectAll</a></div><div class="ttdeci">void slotSelectAll()</div><div class="ttdoc">Слот для выделения всего текста в активном документе.</div><div class="ttdef"><b>Definition</b> copypastecut.cpp:46</div></div>
+<div class="ttc" id="aclass_mdi_main_html"><div class="ttname"><a href="class_mdi_main.html">MdiMain</a></div><div class="ttdoc">Основное окно приложения с поддержкой множества документов.</div><div class="ttdef"><b>Definition</b> mdimain.h:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><b>copypastecut.h</b></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>
