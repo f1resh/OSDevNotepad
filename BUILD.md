@@ -1,9 +1,10 @@
-#Сборка OSDevNotepad
+# Сборка OSDevNotepad
 
-##QT Creator
+## QT Creator
 
 **Требования**
 
 - QT версии 6
 - C++ компилятор с поддержкой стандарта С++17
 - Cmake версии 3.5
+- Компоненты QT: Widgets, LinguisTools, PrintSupport
