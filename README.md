@@ -1,6 +1,6 @@
 OSDevNotepad
 =================
-![GitHub release (with filter)](https://img.shields.io/github/v/release/f1resh/osdevnotepad)
+[![GitHub latest release](https://img.shields.io/github/v/release/f1resh/osdevnotepad)](../../releases/latest)
 
 OSDevNotepad - бесплатный текстовый редактор с открытым исходным кодом, созданный командой "Нескучающие программисты" в рамках курса Командной разработки от Geekbrains.  
 Идея проекта заключается в создании удобного и функционального текстового редактора, в перспективе возможно добавления функций совместной работы пользователей.  
