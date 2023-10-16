@@ -28,4 +28,4 @@ Contribution
 
 Демонстрация
 ==================
-//TO DO
+[Видео-презентация](https://drive.google.com/file/d/1UfXQJKMnOEOt3Tpgla7p7R3bX9BYHeME/view?usp=drive_link)
