@@ -64,6 +64,14 @@ void MainWindow::initSignals()
 
 void MainWindow::slotShowAbout()
 {
-    QMessageBox::about(this,"About OSDevNotepad","OSDevNotepad v."+version+" by Boring Programmers");
+    QMessageBox *about = new QMessageBox(this);
+    about->setAttribute(Qt::WA_DeleteOnClose);
+    about->setWindowTitle(tr("О программе"));
+    about->setText("OSDevNotepad v."+version+" by Boring Programmers\nhttps://github.com/f1resh/OSDevNotepad ");
+    about->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    QPixmap logo(":/Resources/Icons/icon.png");
+    QPixmap scaled = logo.scaled(50,50);
+    about->setIconPixmap(scaled);
+    about->show();
 }
 
